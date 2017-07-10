@@ -8,6 +8,9 @@ namespace T2_PO2.Métodos
 {
     public class CoordCiclicas
     {
+        public void Calcular(string func, double[] x1, double erro)
+        {
 
+        }
     }
 }
