@@ -10,21 +10,52 @@ namespace T2_PO2.Auxiliares
     class Interpretadores
     {
         /// <summary>
-        /// Substitui o valor encontrado para lambda no vetor Y e retorna o vetor transposto
+        /// Calcula a norma do vetor fornecido.
+        /// </summary>
+        /// <param name="vetor"></param>
+        /// <returns></returns>
+        public static double NormaVetor(double[] vetor)
+        {
+            double resultado = 0;
+            for (int i = 0; i < vetor.Length; i++)
+            {
+                resultado += Math.Pow(vetor[i], 2);
+            }
+            return Math.Sqrt(resultado);
+        }
+
+        /// <summary>
+        /// Subtrai vetor x de y.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public static double[] SubtracaoVetor(double[] x, double[] y)
+        {
+            double[] resultado = new double[x.Length];
+            for (int i = 0; i < x.Length; i++)
+            {
+                resultado[i] = x[i] - y[i];
+            }
+            return resultado;
+        }
+
+        /// <summary>
+        /// Substitui o valor encontrado para lambda no vetor Y e retorna o vetor
         /// </summary>
         /// <param name="lambda">Valor minimizado</param>
         /// <param name="yj">Vetor Yj</param>
         /// <returns></returns>
-        public static string SubsLambda(double lambda, string yj)
+        public static double[] SubsLambda(double lambda, string yj)
         {
             ExpressionParser parser = new ExpressionParser();
             parser.Values.Add("lamb", lambda);
-            string resultado = "";
             string[] splited = SplitToStrings(yj);
+            double[] resultado = new double[splited.Length];
 
             for (int i = 0; i < splited.Length; i++)
             {
-                resultado += i == 0 ? parser.Parse(splited[i]).ToString() : " " + parser.Parse(splited[i]).ToString();
+                resultado[i] = parser.Parse(splited[i]);
             }
 
             return resultado;
