@@ -46,8 +46,9 @@ namespace T2_PO2.Métodos
                 }
                 string yj = Interpretadores.GeraVetorY(x, Interpretadores.LambdaVDirec(d));
                 string f = Interpretadores.GeraFy(fx, yj);
-                var lambda = Auxiliares.Newton.Calcular(x[0], f.Replace("lamb", "x"), 0.01);
-                x = Interpretadores.SubsLambda((double)lambda, yj);
+                var lambda = Newton.Calcular(0, (f.Replace("lamb", "x[1]")).Replace(',','.'), 0.1);
+                x = Interpretadores.SubsLambda(lambda, yj.Replace(',','.'));
+                gradiente = CalculaGradiente(n, fx, x).ToArray();
                 k += 1;
             }
 
