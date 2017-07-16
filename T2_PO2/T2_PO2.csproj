@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="Auxiliares\DerivadasMultivariaveis.cs" />
     <Compile Include="Auxiliares\Newton.cs" />
+    <Compile Include="Auxiliares\OperacoesVetor.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +77,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Métodos\CoordCiclicas.cs" />
+    <Compile Include="Métodos\GradConjugado.cs" />
     <Compile Include="Métodos\Gradiente.cs" />
     <Compile Include="Métodos\NewtonMulti.cs" />
     <Compile Include="Program.cs" />
