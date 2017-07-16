@@ -58,6 +58,7 @@
     </Compile>
     <Compile Include="Métodos\CoordCiclicas.cs" />
     <Compile Include="Métodos\Gradiente.cs" />
+    <Compile Include="Métodos\HookeJeeves.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Auxiliares\Interpretadores.cs" />

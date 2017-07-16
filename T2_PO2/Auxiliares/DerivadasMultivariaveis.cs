@@ -43,7 +43,7 @@ namespace T2_PO2.Auxiliares
                 f2 = parser.Parse(fx);
                 fx_linha = (f1 - f2) / (2 * h);
                 h /= 2;
-            } while (Math.Abs(fx_linha - auxfx_linha) > 0.0000001);
+            } while (Math.Abs(fx_linha - auxfx_linha) > 0.00001);
 
             return fx_linha;
         }
@@ -85,7 +85,7 @@ namespace T2_PO2.Auxiliares
 
                 fx_linha = (f1 - (2 * f2) + f3) / (4 * Math.Pow(h, 2));
                 h /= 2;
-            } while ((Math.Abs(fx_linha - auxfx_linha)) > 0.0000001);
+            } while ((Math.Abs(fx_linha - auxfx_linha)) > 0.00001);
 
             return fx_linha;
         }
