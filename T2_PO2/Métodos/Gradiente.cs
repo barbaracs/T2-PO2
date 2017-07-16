@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using T2_PO2.Auxiliares;
-using T1_PO2.Helpers;
-using T1_PO2.Métodos;
 
 namespace T2_PO2.Métodos
 {

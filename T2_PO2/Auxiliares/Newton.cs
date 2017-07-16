@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using T1_PO2.Helpers;
 
 namespace T2_PO2.Auxiliares
 {
