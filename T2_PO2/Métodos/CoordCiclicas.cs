@@ -22,7 +22,6 @@ namespace T2_PO2.Métodos
             do
             {
                 k++;
-                //for pra fazer yk = xk (xk = vetor anteriormente calculado)
                 x = (double[])xk.Clone();
                 yk = (double[])xk.Clone();
                 for (int j = 0; j < n; j++)

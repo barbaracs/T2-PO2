@@ -88,7 +88,7 @@ namespace T2_PO2
             double erro = 0.01;
             Console.WriteLine(f);
             int n = 2;
-            var t = CoordCiclicas.Calcular(f, xk, erro, n);
+            var t = HookeJeeves.Calcular(f, xk, erro, n);
 
             Console.WriteLine(t[0]);
             Console.WriteLine(t[1]);
