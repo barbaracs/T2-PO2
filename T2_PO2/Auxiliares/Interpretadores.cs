@@ -51,6 +51,22 @@ namespace T2_PO2.Auxiliares
         }
 
         /// <summary>
+        /// Somar vetor x com y.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public static double[] SomaVetor(double[] x, double[] y)
+        {
+            double[] resultado = new double[x.Length];
+            for (int i = 0; i < x.Length; i++)
+            {
+                resultado[i] = x[i] + y[i];
+            }
+            return resultado;
+        }
+
+        /// <summary>
         /// Substitui o valor encontrado para lambda no vetor Y e retorna o vetor
         /// </summary>
         /// <param name="lambda">Valor minimizado</param>

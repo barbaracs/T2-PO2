@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>sl_barbara_matheus</name>
+    </assembly>
+    <members>
+        <member name="T:Sistemas.Lineares.Helpers">
+            <summary>
+            Classe contendo métodos de suporte para o cálculo de sistemas lineares.
+            </summary>
+        </member>
+        <member name="M:Sistemas.Lineares.Helpers.Determinante(System.Int32,System.Double[0:,0:])">
+            <summary>
+            Calcula o determinante de uma matriz.
+            </summary>
+            <param name="ordem">Ordem da matriz.</param>
+            <param name="matriz">Matriz a ser calculado o determinante.</param>
+            <returns>Retorna o valor do determinante.</returns>
+        </member>
+        <member name="T:Sistemas.Lineares.MétodosSistemasLineares">
+            <summary>
+            Classe contendo métodos utilizados para resolver sistemas lineares.
+            </summary>
+        </member>
+        <member name="M:Sistemas.Lineares.MétodosSistemasLineares.SistemaLinearTriangularSuperior(System.Int32,System.Double[0:,0:],System.Double[])">
+            <summary>
+            Resolução de um sistema linear triangular superior. 
+            (Números no triângulo superior, zeros no triângulo inferior.)
+            </summary>
+            <param name="ordem">Ordem da matriz.</param>
+            <param name="matrizA">Matriz dos coeficientes.</param>
+            <param name="vetorB">Vetor dos termos independentes.</param>
+            <returns>Retorna vetor solução.</returns>
+        </member>
+        <member name="M:Sistemas.Lineares.MétodosSistemasLineares.TrianguloSuperior(System.Int32,System.Double[0:,0:],System.Double[])">
+            <summary>
+            Deixa a matriz no estilo triangulo superior.
+            </summary>
+            <param name="n">Ordem da matriz.</param>
+            <param name="matriz">Matriz a ser utilizada.</param>
+            <param name="b">Vetor b.</param>
+            <returns>Matriz pronta para usar sts.</returns>
+        </member>
+    </members>
+</doc>

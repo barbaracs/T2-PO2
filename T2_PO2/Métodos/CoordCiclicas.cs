@@ -10,7 +10,6 @@ namespace T2_PO2.Métodos
 {
     public class CoordCiclicas
     {
-
         public static double[] Calcular(string func, double[] xk, double erro, int n)
         {
             int k = 0;
