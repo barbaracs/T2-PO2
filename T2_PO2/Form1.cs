@@ -83,15 +83,18 @@ namespace T2_PO2
 
             //var t = GradConjugado.Calcular(2, 0.2, "0 0", Q, "24 12");
 
-            string f = "(x[1]-2)^4+(x[1]-2*x[2])^2";
-            double[] xk = { 0, 3 };
-            double erro = 0.01;
-            Console.WriteLine(f);
-            int n = 2;
-            var t = CoordCiclicas.Calcular(f, xk, erro, n);
+            //string f = "(x[1]-2)^4+(x[1]-2*x[2])^2";
+            //double[] xk = { 0, 3 };
+            //double erro = 0.01;
+            //Console.WriteLine(f);
+            //int n = 2;
+            //var t = CoordCiclicas.Calcular(f, xk, erro, n);
 
-            Console.WriteLine(t[0]);
-            Console.WriteLine(t[1]);
+            //Console.WriteLine(t[0]);
+            //Console.WriteLine(t[1]);
+
+            string f = "x[1]^3-x[1]^2+2x[2]^2-2x[2]";
+            var t = FletcherReeves.Calcular(2, f, 0.01, "1 1");
         }
     }
 }
