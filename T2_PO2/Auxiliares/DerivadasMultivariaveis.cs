@@ -89,5 +89,66 @@ namespace T2_PO2.Auxiliares
 
             return fx_linha;
         }
+
+        public static double DerivadaParcial2(int n, string fx, double[] x, int k, int j)
+        {
+            fx = Interpretadores.RemoveChaves(fx);
+            ExpressionParser parser = new ExpressionParser();
+            //Cria vetor X para ser interpretado
+            DoubleValue[] X = new DoubleValue[n];
+            for (int i = 0; i < X.Length; i++)
+            {
+                X[i] = new DoubleValue();
+                X[i].Value = x[i];
+                parser.Values.Add("x" + (i + 1), X[i]);
+            }
+
+            if (k == j)
+            {
+                double h = 0.5;
+                double fx_linha = 0, auxfx_linha = 0, f1, f2, f3;
+
+                do
+                {
+                    auxfx_linha = fx_linha;
+                    X[k].Value = x[k] + 2 * h;
+                    f1 = parser.Parse(fx);
+                    X[k].Value = x[k];
+                    f2 = parser.Parse(fx);
+                    X[k].Value = x[k] - 2 * h;
+                    f3 = parser.Parse(fx);
+                    fx_linha = (f1 - 2*f2 + f3) / (4 * h * h);
+                    h /= 2;
+                } while (Math.Abs(fx_linha - auxfx_linha) > 0.0000001);
+
+                return fx_linha;
+            }
+            else
+            {
+                double h = 0.5;
+                double fx_linha = 0, auxfx_linha = 0, f1, f2, f3, f4;
+
+                do
+                {
+                    auxfx_linha = fx_linha;
+                    X[k].Value = x[k] + h;
+                    X[j].Value = x[j] + h;
+                    f1 = parser.Parse(fx);
+                    X[k].Value = x[k] - h;
+                    X[j].Value = x[j] + h;
+                    f2 = parser.Parse(fx);
+                    X[k].Value = x[k] + h;
+                    X[j].Value = x[j] - h;
+                    f3 = parser.Parse(fx);
+                    X[k].Value = x[k] - h;
+                    X[j].Value = x[j] - h;
+                    f4 = parser.Parse(fx);
+                    fx_linha = (f1 - f2 - f3 + f4) / (4 * h * h);
+                    h /= 2;
+                } while (Math.Abs(fx_linha - auxfx_linha) > 0.0000001);
+
+                return fx_linha;
+            }
+        }
     }
 }
