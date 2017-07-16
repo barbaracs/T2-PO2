@@ -11,9 +11,10 @@ namespace T2_PO2.Métodos
 {
     public class CoordCiclicas
     {
-        Newton minimiza = new Newton();
+
         public static double[] Calcular(string func, double[] xk, double erro, int n)
         {
+            Newton minimiza = new Newton();
             int k = 0;
             double[] d, yk, valorAnt, valorFim, vetNorma;
             d = new double[n];
