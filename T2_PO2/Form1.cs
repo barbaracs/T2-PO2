@@ -203,63 +203,69 @@ namespace T2_PO2
 
         private void Button_Click(object sender, EventArgs e)
         {
-            switch (tipo_selec)
+            try { 
+                switch (tipo_selec)
+                {
+                    case Métodos.Coordenadas_Cíclicas:
+                        var xotimo = CoordCiclicas.Calcular(funcCiclicasTextBox.Text, (x1CiclicasTextBox.Text).SplitToDoubles(), double.Parse(eCiclicasNumericUpDown.Value.ToString()), int.Parse(nCiclicasNumericUpDown.Value.ToString()));
+                        xotimoCiclicasTextBox.Text = xotimo.ParaString();
+                        break;
+                    case Métodos.Hooke_and_Jeeves:
+                        string f = fHookeTextBox.Text;
+                        string x1 = x1HookeTextBox.Text;
+                        double err = double.Parse(eHookeNumericUpDown.Value.ToString());
+                        int n = int.Parse(nHookeNumericUpDown.Value.ToString());
+                        var aux = x1.SplitToDoubles();
+                        xotimo = HookeJeeves.Calcular(f, aux, err, n);
+                        xotimoHookeTextBox.Text = xotimo.ParaString();
+                        break;
+                    case Métodos.Gradiente:
+                        f = fGradTextBox.Text;
+                        x1 = x1GradTextBox.Text;
+                        err = double.Parse(eGradNumericUpDown.Value.ToString());
+                        n = int.Parse(nGradNumericUpDown.Value.ToString());
+                        xotimo = Gradiente.Calcular(n, f, err, x1);
+                        xotimoGradTextBox.Text = xotimo.ParaString();
+                        break;
+                    case Métodos.Newton:
+                        f = fNewtonTextBox.Text;
+                        x1 = x1NewtonTextBox.Text;
+                        err = double.Parse(eNewtonNumericUpDown.Value.ToString());
+                        n = int.Parse(nNewtonNumericUpDown.Value.ToString());
+                        xotimo = NewtonMulti.Calcular(n, f, err, x1);
+                        xotimoNewtonTextBox.Text = xotimo.ParaString();
+                        break;
+                    case Métodos.Gradiente_Conj_Gen:
+                        f = fGradConjTextBox.Text;
+                        x1 = x1GradConjTextBox.Text;
+                        err = double.Parse(eGradConjNumericUpDown.Value.ToString());
+                        n = int.Parse(nGradConjNumericUpDown.Value.ToString());
+                        xotimo = GradConjugado.Calcular(n, err, f, x1);
+                        xotimoGradConjTextBox.Text = xotimo.ParaString();
+                        break;
+                    case Métodos.Fletcher_and_Reeves:
+                        f = fNewtonTextBox.Text;
+                        x1 = x1FletchTextBox.Text;
+                        err = double.Parse(eFletchNumericUpDown.Value.ToString());
+                        n = int.Parse(nFletchNumericUpDown.Value.ToString());
+                        xotimo = FletcherReeves.Calcular(n, f, err, x1);
+                        xotimoFletchTextBox.Text = xotimo.ParaString();
+                        break;
+                    case Métodos.Davidon_Fletcher_Powell:
+                        f = fDavTextBox.Text;
+                        x1 = x1DavTextBox.Text;
+                        err = double.Parse(eDavNumericUpDown.Value.ToString());
+                        n = int.Parse(nDavNumericUpDown.Value.ToString());
+                        xotimo = DavidonFletcherPowell.Calcular(n, f, err, x1);
+                        xotimoDavTextBox.Text = xotimo.ParaString();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception excep)
             {
-                case Métodos.Coordenadas_Cíclicas:
-                    var xotimo = CoordCiclicas.Calcular(funcCiclicasTextBox.Text, (x1CiclicasTextBox.Text).SplitToDoubles(), double.Parse(eCiclicasNumericUpDown.Value.ToString()), int.Parse(nCiclicasNumericUpDown.Value.ToString()));
-                    xotimoCiclicasTextBox.Text = xotimo.ParaString();
-                    break;
-                case Métodos.Hooke_and_Jeeves:
-                    string f = fHookeTextBox.Text;
-                    string x1 = x1HookeTextBox.Text;
-                    double err = double.Parse(eHookeNumericUpDown.Value.ToString());
-                    int n = int.Parse(nHookeNumericUpDown.Value.ToString());
-                    var aux = x1.SplitToDoubles();
-                    xotimo = HookeJeeves.Calcular(f, aux, err, n);
-                    xotimoHookeTextBox.Text = xotimo.ParaString();
-                    break;
-                case Métodos.Gradiente:
-                    f = fGradTextBox.Text;
-                    x1 = x1GradTextBox.Text;
-                    err = double.Parse(eGradNumericUpDown.Value.ToString());
-                    n = int.Parse(nGradNumericUpDown.Value.ToString());
-                    xotimo = Gradiente.Calcular(n, f, err, x1);
-                    xotimoGradTextBox.Text = xotimo.ParaString();
-                    break;
-                case Métodos.Newton:
-                    f = fNewtonTextBox.Text;
-                    x1 = x1NewtonTextBox.Text;
-                    err = double.Parse(eNewtonNumericUpDown.Value.ToString());
-                    n = int.Parse(nNewtonNumericUpDown.Value.ToString());
-                    xotimo = NewtonMulti.Calcular(n, f, err, x1);
-                    xotimoNewtonTextBox.Text = xotimo.ParaString();
-                    break;
-                case Métodos.Gradiente_Conj_Gen:
-                    f = fGradConjTextBox.Text;
-                    x1 = x1GradConjTextBox.Text;
-                    err = double.Parse(eGradConjNumericUpDown.Value.ToString());
-                    n = int.Parse(nGradConjNumericUpDown.Value.ToString());
-                    xotimo = GradConjugado.Calcular(n, err, f, x1);
-                    xotimoGradConjTextBox.Text = xotimo.ParaString();
-                    break;
-                case Métodos.Fletcher_and_Reeves:
-                    f = fNewtonTextBox.Text;
-                    x1 = x1FletchTextBox.Text;
-                    err = double.Parse(eFletchNumericUpDown.Value.ToString());
-                    n = int.Parse(nFletchNumericUpDown.Value.ToString());
-                    xotimo = FletcherReeves.Calcular(n, f, err, x1);
-                    xotimoFletchTextBox.Text = xotimo.ParaString();
-                    break;
-                case Métodos.Davidon_Fletcher_Powell:
-                    f = fDavTextBox.Text;
-                    x1 = x1DavTextBox.Text;
-                    err = double.Parse(eDavNumericUpDown.Value.ToString());
-                    n = int.Parse(nDavNumericUpDown.Value.ToString());
-                    xotimo = DavidonFletcherPowell.Calcular(n, f, err, x1);
-                    xotimoDavTextBox.Text = xotimo.ParaString();
-                    break;
-                default:
-                    break;
+                MessageBox.Show(excep.Message);
             }
         }
     }

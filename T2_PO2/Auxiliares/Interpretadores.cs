@@ -129,6 +129,18 @@ namespace T2_PO2.Auxiliares
             return vector.Split(' ');
         }
 
+        public static bool IsDigitsOnly(this string str)
+        {
+            foreach (char c in str)
+            {
+                if (c < '0' || c > '9')
+                    if(c != ',')
+                        return false;
+            }
+
+            return true;
+        }
+
         /// <summary>
         /// Separa a string que representa um vetor transposto em um vetor double.
         /// </summary>
@@ -136,7 +148,15 @@ namespace T2_PO2.Auxiliares
         /// <returns></returns>
         public static double[] SplitToDoubles(this string vector)
         {
-            string[] splited = vector.Split(' ');
+            string[] splited_aux = vector.Split(' ');
+            var list = splited_aux.ToList();
+            list.RemoveAll(x => x == "");
+            foreach (var item in list)
+            {
+                if (!item.IsDigitsOnly())
+                    throw new Exception("Apenas números são aceitos!");
+            }
+            string[] splited = list.ToArray();
             double[] result = new double[splited.Length];
 
             for (int i = 0; i < result.Length; i++)
