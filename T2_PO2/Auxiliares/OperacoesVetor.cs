@@ -62,5 +62,15 @@ namespace T2_PO2.Auxiliares
 
             return result;
         }
+
+
+        public static double[,] DivideConstante(this double[,] m, double k)
+        {
+            double[,] result = (double[,])m.Clone();
+            for (int i = 0; i < m.GetLength(0); i++)
+                for (int j = 0; j < m.GetLength(1); j++)
+                    result[i, j] /= k;
+            return result;
+        }
     }
 }

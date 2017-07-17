@@ -77,6 +77,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Métodos\CoordCiclicas.cs" />
+    <Compile Include="Métodos\DavidonFletcherPowell.cs" />
     <Compile Include="Métodos\FletcherReeves.cs" />
     <Compile Include="Métodos\GradConjugado.cs" />
     <Compile Include="Métodos\Gradiente.cs" />
