@@ -138,7 +138,13 @@ namespace T2_PO2
 
             //var t = GradConjugado.Calcular(2, 0.2, "0 0", Q, "24 12");
 
-            string f = "x[1]^2-x[1]*x[2]+x[2]^2-2*x[1]+x[2]";
+            string f = "(x[1]-2)^4+(x[1]-2*x[2])^2";
+            double[] xk = { 0, 3 };
+            double erro = 0.01;
+            Console.WriteLine(f);
+            int n = 2;
+            var t = HookeJeeves.Calcular(f, xk, erro, n);
+
             //double[] xk = { 0, 3 };
             //double erro = 0.01;
             //Console.WriteLine(f);
