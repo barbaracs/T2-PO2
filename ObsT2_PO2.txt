@@ -6,3 +6,5 @@ O trabalho foi feito na linguagem C#.
 Para inserir a função (F(x)) é necessário colocar o índice do x entre colchetes, como por exemplo: (x[1]-2)^4+(x[1]-2*x[2])^2
 Os números decimais devem ser escritos com ".", não com ",".
 O elemento "n" indica a ordem do vetor x.
+O elementos do vetor inicial (x1) devem ser separados utilizando apenas um espaço. O vetor(0, 3), por exemplo, deve ser inserido como: 0 3
+O vetor final (x*) também mostrará os elementos utilizando espaço para separá-los.
