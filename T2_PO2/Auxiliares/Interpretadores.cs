@@ -7,7 +7,7 @@ using info.lundin.math;
 
 namespace T2_PO2.Auxiliares
 {
-    class Interpretadores
+    static class Interpretadores
     {
         /// <summary>
         /// Remove chaves da função.
@@ -134,7 +134,7 @@ namespace T2_PO2.Auxiliares
         /// </summary>
         /// <param name="vector">Vetor transposto a ser separado.</param>
         /// <returns></returns>
-        public static double[] SplitToDoubles(string vector)
+        public static double[] SplitToDoubles(this string vector)
         {
             string[] splited = vector.Split(' ');
             double[] result = new double[splited.Length];
