@@ -8,3 +8,6 @@ Os números decimais devem ser escritos com ".", não com ",".
 O elemento "n" indica a ordem do vetor x.
 O elementos do vetor inicial (x1) devem ser separados utilizando apenas um espaço. O vetor(0, 3), por exemplo, deve ser inserido como: 0 3
 O vetor final (x*) também mostrará os elementos utilizando espaço para separá-los.
+
+
+IMPORTANTE: TIVEMOS UM ERRO NA INTERFACE PORÉM OS ULTIMOS 3 MÉTODOS ESTÃO FUNCIONANDO.

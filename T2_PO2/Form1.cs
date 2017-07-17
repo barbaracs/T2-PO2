@@ -157,7 +157,7 @@ namespace T2_PO2
             //string f = "x[1]^3-x[1]^2+2x[2]^2-2x[2]";
             //var t = FletcherReeves.Calcular(2, f, 0.01, "1 1");
 
-            var t = DavidonFletcherPowell.Calcular(2, f, 0.1, "0 0");
+            //var t = DavidonFletcherPowell.Calcular(2, f, 0.1, "0 0");
         }
 
         Métodos tipo_selec;
@@ -214,7 +214,9 @@ namespace T2_PO2
                     string x1 = x1HookeTextBox.Text;
                     double err = double.Parse(eHookeNumericUpDown.Value.ToString());
                     int n = int.Parse(nHookeNumericUpDown.Value.ToString());
-                    
+                    var aux = x1.SplitToDoubles();
+                    xotimo = HookeJeeves.Calcular(f, aux, err, n);
+                    xotimoHookeTextBox.Text = xotimo.ParaString();
                     break;
                 case Métodos.Gradiente:
                     f = fGradTextBox.Text;
@@ -225,12 +227,30 @@ namespace T2_PO2
                     xotimoGradTextBox.Text = xotimo.ParaString();
                     break;
                 case Métodos.Newton:
+                    f = fNewtonTextBox.Text;
+                    x1 = x1NewtonTextBox.Text;
+                    err = double.Parse(eNewtonNumericUpDown.Value.ToString());
+                    n = int.Parse(nNewtonNumericUpDown.Value.ToString());
+                    xotimo = NewtonMulti.Calcular(n, f, err, x1);
+                    xotimoNewtonTextBox.Text = xotimo.ParaString();
                     break;
                 case Métodos.Gradiente_Conj_Gen:
                     break;
                 case Métodos.Fletcher_and_Reeves:
+                    f = fNewtonTextBox.Text;
+                    x1 = x1FletchTextBox.Text;
+                    err = double.Parse(eFletchNumericUpDown.Value.ToString());
+                    n = int.Parse(nFletchNumericUpDown.Value.ToString());
+                    xotimo = FletcherReeves.Calcular(n, f, err, x1);
+                    xotimoFletchTextBox.Text = xotimo.ParaString();
                     break;
                 case Métodos.Davidon_Fletcher_Powell:
+                    f = fDavTextBox.Text;
+                    x1 = x1DavTextBox.Text;
+                    err = double.Parse(eDavNumericUpDown.Value.ToString());
+                    n = int.Parse(nDavNumericUpDown.Value.ToString());
+                    xotimo = DavidonFletcherPowell.Calcular(n, f, err, x1);
+                    xotimoDavTextBox.Text = xotimo.ParaString();
                     break;
                 default:
                     break;

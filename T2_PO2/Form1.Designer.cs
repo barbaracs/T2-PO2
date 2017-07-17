@@ -70,7 +70,7 @@
             this.eFletchNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.flowLayoutPanel24 = new System.Windows.Forms.FlowLayoutPanel();
             this.label32 = new System.Windows.Forms.Label();
-            this.x1FletchNumericUpDown = new System.Windows.Forms.TextBox();
+            this.x1FletchTextBox = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
             this.calcFletchButton = new System.Windows.Forms.Button();
             this.flowLayoutPanel25 = new System.Windows.Forms.FlowLayoutPanel();
@@ -677,7 +677,7 @@
             // 
             this.flowLayoutPanel24.AutoSize = true;
             this.flowLayoutPanel24.Controls.Add(this.label32);
-            this.flowLayoutPanel24.Controls.Add(this.x1FletchNumericUpDown);
+            this.flowLayoutPanel24.Controls.Add(this.x1FletchTextBox);
             this.flowLayoutPanel24.Controls.Add(this.label33);
             this.flowLayoutPanel24.Location = new System.Drawing.Point(3, 67);
             this.flowLayoutPanel24.Name = "flowLayoutPanel24";
@@ -694,12 +694,12 @@
             this.label32.TabIndex = 1;
             this.label32.Text = "x¹ =";
             // 
-            // x1FletchNumericUpDown
+            // x1FletchTextBox
             // 
-            this.x1FletchNumericUpDown.Location = new System.Drawing.Point(33, 3);
-            this.x1FletchNumericUpDown.Name = "x1FletchNumericUpDown";
-            this.x1FletchNumericUpDown.Size = new System.Drawing.Size(153, 20);
-            this.x1FletchNumericUpDown.TabIndex = 0;
+            this.x1FletchTextBox.Location = new System.Drawing.Point(33, 3);
+            this.x1FletchTextBox.Name = "x1FletchTextBox";
+            this.x1FletchTextBox.Size = new System.Drawing.Size(153, 20);
+            this.x1FletchTextBox.TabIndex = 0;
             // 
             // label33
             // 
@@ -1915,7 +1915,7 @@
         private System.Windows.Forms.NumericUpDown eFletchNumericUpDown;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel24;
         private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.TextBox x1FletchNumericUpDown;
+        private System.Windows.Forms.TextBox x1FletchTextBox;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Button calcFletchButton;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel25;
