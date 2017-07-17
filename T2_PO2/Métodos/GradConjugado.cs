@@ -31,44 +31,50 @@ namespace T2_PO2.Métodos
             return result;
         }
 
-        public static double[] Calcular(int n, double e, string x_ini, double[,] Q, string _b)
+        public static double[] Calcular(int n, double e, string fx,string x_ini)
         {
-            double[] b = Interpretadores.SplitToDoubles(_b);
             var aux = Interpretadores.SplitToDoubles(x_ini);
             double[,] xk = new double[n, 1];
             double[] xk_1 = (double[])xk.ToVector().Clone();
             double[] gk = new double[n];
             double[] gk_1 = new double[n];
-            double[,] gk_aux;
             double[] dk = new double[n];
             double[] dk_1 = new double[n];
+            double[,] Hess;
             double lambda, beta;
             //Passa x_ini para matriz para poder multiplicar
             for (int i = 0; i < xk.GetLength(0); i++)
                 xk[i, 0] = aux[i];
-            //Mult Q*x0
-            gk_aux = MultMatriz(Q, xk);
-            //Passa resultado da mult para vetor
-            gk = gk_aux.ToVector();
-            //Calcula g0
-            gk = Interpretadores.SubtracaoVetor(gk, b);
+            //g0
+            Passo1:
+            gk = Gradiente.CalculaGradiente(n, fx, xk.ToVector()).ToArray();
             gk_1 = (double[])gk.Clone();
             for (int i = 0; i < gk.Length; i++)
                 dk[i] = -gk[i];
-            while (Interpretadores.NormaVetor(gk) > e)
+            for (int k = 0; k < n; k++)
             {
+                Hess = NewtonMulti.Hessiano(2, fx, xk.ToVector());
                 double[,] dk_transp = dk.TranspVetor();
-                double[,] dk_Q = MultMatriz(dk_transp, Q);
-                double[] dk_Q_assist = dk_Q.ToVector();
-                
-                lambda = -(MultEscalar(gk, dk) / MultEscalar(dk_Q_assist,dk));
+                double[,] dk_Hess = MultMatriz(dk_transp, Hess);
+                double[] dk_H_assist = dk_Hess.ToVector();
+
+                lambda = -(MultEscalar(gk, dk) / MultEscalar(dk_H_assist, dk));
 
                 xk_1 = Interpretadores.SomaVetor(xk.ToVector(), dk.MultConstante(lambda));
-                gk_1 = Interpretadores.SubtracaoVetor(MultMatriz(Q, xk_1.ToMatriz()).ToVector(), b);
-                if (Interpretadores.NormaVetor(gk_1) <= e)
-                    break;
-                beta = MultEscalar(MultMatriz(gk_1.TranspVetor(), Q).ToVector(), dk) / MultEscalar(dk_Q_assist, dk);
+                gk_1 = Gradiente.CalculaGradiente(n, fx, xk_1).ToArray();
+
+                if (k == n - 1)
+                    if (Interpretadores.NormaVetor(gk_1) <= e)
+                        break;
+                    else
+                    {
+                        for (int i = 0; i < xk.Length; i++)
+                            xk[i, 0] = xk_1[i];
+                        goto Passo1;
+                    }
+                beta = MultEscalar(MultMatriz(gk_1.TranspVetor(), Hess).ToVector(), dk) / MultEscalar(dk_H_assist, dk);
                 dk_1 = Interpretadores.SomaVetor(gk_1.Negativo(), dk.MultConstante(beta));
+                
                 dk = (double[])dk_1.Clone();
                 gk = (double[])gk_1.Clone();
                 for (int i = 0; i < xk.Length; i++)

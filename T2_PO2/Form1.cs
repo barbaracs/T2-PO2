@@ -235,6 +235,12 @@ namespace T2_PO2
                     xotimoNewtonTextBox.Text = xotimo.ParaString();
                     break;
                 case Métodos.Gradiente_Conj_Gen:
+                    f = fGradConjTextBox.Text;
+                    x1 = x1GradConjTextBox.Text;
+                    err = double.Parse(eGradConjNumericUpDown.Value.ToString());
+                    n = int.Parse(nGradConjNumericUpDown.Value.ToString());
+                    xotimo = GradConjugado.Calcular(n, err, f, x1);
+                    xotimoGradConjTextBox.Text = xotimo.ParaString();
                     break;
                 case Métodos.Fletcher_and_Reeves:
                     f = fNewtonTextBox.Text;
