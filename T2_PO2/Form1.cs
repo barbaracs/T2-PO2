@@ -10,11 +10,66 @@ using System.Windows.Forms;
 using info.lundin.math;
 using T2_PO2.Auxiliares;
 using T2_PO2.Métodos;
+using System.Reflection;
 
 namespace T2_PO2
 {
     public partial class Form1 : Form
     {
+        enum Métodos
+        {
+            [Description("Coordenadas Cíclicas")]
+            Coordenadas_Cíclicas,
+            [Description("Hooke and Jeeves")]
+            Hooke_and_Jeeves,
+            [Description("Gradiente")]
+            Gradiente,
+            [Description("Newton")]
+            Newton,
+            [Description("Gradiente Conj. Gen.")]
+            Gradiente_Conj_Gen,
+            [Description("Fletcher and Reeves")]
+            Fletcher_and_Reeves,
+            [Description("Davidon-Fletcher-Powell")]
+            Davidon_Fletcher_Powell
+        }
+
+        public static string GetEnumDescription(Enum value)
+        {
+            FieldInfo fi = value.GetType().GetField(value.ToString());
+
+            DescriptionAttribute[] attributes =
+                (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
+
+            if (attributes != null && attributes.Length > 0)
+                return attributes[0].Description;
+            else
+                return value.ToString();
+        }
+
+        public static T GetValueFromDescription<T>(string description)
+        {
+            var type = typeof(T);
+            if (!type.IsEnum) throw new InvalidOperationException();
+            foreach (var field in type.GetFields())
+            {
+                var attribute = Attribute.GetCustomAttribute(field,
+                    typeof(DescriptionAttribute)) as DescriptionAttribute;
+                if (attribute != null)
+                {
+                    if (attribute.Description == description)
+                        return (T)field.GetValue(null);
+                }
+                else
+                {
+                    if (field.Name == description)
+                        return (T)field.GetValue(null);
+                }
+            }
+            throw new ArgumentException("Not found.", "description");
+            // or return default(T);
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -97,6 +152,83 @@ namespace T2_PO2
             //var t = FletcherReeves.Calcular(2, f, 0.01, "1 1");
 
             var t = DavidonFletcherPowell.Calcular(2, f, 0.1, "0 0");
+        }
+
+        Métodos tipo_selec;
+        private void RadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            
+            foreach (var item in controle.Controls.OfType<GroupBox>())
+            {
+                item.Visible = false;
+            }
+            var obj_selec = flowSelect.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked);
+            obj_selec.Visible = true;
+            string selected = obj_selec?.Text;
+
+            tipo_selec = GetValueFromDescription<Métodos>(selected);
+            switch (tipo_selec)
+            {
+                case Métodos.Coordenadas_Cíclicas:
+                    ciclicasGroupBox.Visible = true;
+                    break;
+                case Métodos.Hooke_and_Jeeves:
+                    hookeGroupBox.Visible = true;
+                    break;
+                case Métodos.Gradiente:
+                    gradGroupBox.Visible = true;
+                    break;
+                case Métodos.Newton:
+                    newtonGroupBox.Visible = true;
+                    break;
+                case Métodos.Gradiente_Conj_Gen:
+                    gradConjGroupBox.Visible = true;
+                    break;
+                case Métodos.Fletcher_and_Reeves:
+                    fletchGroupBox.Visible = true;
+                    break;
+                case Métodos.Davidon_Fletcher_Powell:
+                    davGroupBox.Visible = true;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            switch (tipo_selec)
+            {
+                case Métodos.Coordenadas_Cíclicas:
+                    var xotimo = CoordCiclicas.Calcular(funcCiclicasTextBox.Text, (x1CiclicasTextBox.Text).SplitToDoubles(), double.Parse(eCiclicasNumericUpDown.Value.ToString()), int.Parse(nCiclicasNumericUpDown.Value.ToString()));
+                    xotimoCiclicasTextBox.Text = xotimo.ParaString();
+                    break;
+                case Métodos.Hooke_and_Jeeves:
+                    string f = fHookeTextBox.Text;
+                    string x1 = x1HookeTextBox.Text;
+                    double err = double.Parse(eHookeNumericUpDown.Value.ToString());
+                    int n = int.Parse(nHookeNumericUpDown.Value.ToString());
+                    
+                    break;
+                case Métodos.Gradiente:
+                    f = fGradTextBox.Text;
+                    x1 = x1GradTextBox.Text;
+                    err = double.Parse(eGradNumericUpDown.Value.ToString());
+                    n = int.Parse(nGradNumericUpDown.Value.ToString());
+                    xotimo = Gradiente.Calcular(n, f, err, x1);
+                    xotimoGradTextBox.Text = xotimo.ParaString();
+                    break;
+                case Métodos.Newton:
+                    break;
+                case Métodos.Gradiente_Conj_Gen:
+                    break;
+                case Métodos.Fletcher_and_Reeves:
+                    break;
+                case Métodos.Davidon_Fletcher_Powell:
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

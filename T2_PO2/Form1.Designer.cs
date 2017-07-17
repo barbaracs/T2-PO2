@@ -286,6 +286,7 @@
             this.ciclicaRadioButton.TabStop = true;
             this.ciclicaRadioButton.Text = "Coordenadas Cíclicas";
             this.ciclicaRadioButton.UseVisualStyleBackColor = true;
+            this.ciclicaRadioButton.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // hookeRadioButton
             // 
@@ -297,6 +298,7 @@
             this.hookeRadioButton.TabStop = true;
             this.hookeRadioButton.Text = "Hooke and Jeeves";
             this.hookeRadioButton.UseVisualStyleBackColor = true;
+            this.hookeRadioButton.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // gradienteRadioButton
             // 
@@ -308,6 +310,7 @@
             this.gradienteRadioButton.TabStop = true;
             this.gradienteRadioButton.Text = "Gradiente";
             this.gradienteRadioButton.UseVisualStyleBackColor = true;
+            this.gradienteRadioButton.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // newtonRadioButton
             // 
@@ -319,6 +322,7 @@
             this.newtonRadioButton.TabStop = true;
             this.newtonRadioButton.Text = "Newton";
             this.newtonRadioButton.UseVisualStyleBackColor = true;
+            this.newtonRadioButton.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // gradienteConjRadioButton
             // 
@@ -330,6 +334,7 @@
             this.gradienteConjRadioButton.TabStop = true;
             this.gradienteConjRadioButton.Text = "Gradiente Conj. Gen.";
             this.gradienteConjRadioButton.UseVisualStyleBackColor = true;
+            this.gradienteConjRadioButton.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // fletcherRadioButton
             // 
@@ -341,6 +346,7 @@
             this.fletcherRadioButton.TabStop = true;
             this.fletcherRadioButton.Text = "Fletcher and Reeves";
             this.fletcherRadioButton.UseVisualStyleBackColor = true;
+            this.fletcherRadioButton.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // davidonRadioButton
             // 
@@ -352,6 +358,7 @@
             this.davidonRadioButton.TabStop = true;
             this.davidonRadioButton.Text = "Davidon-Fletcher-Powell";
             this.davidonRadioButton.UseVisualStyleBackColor = true;
+            this.davidonRadioButton.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // controle
             // 
@@ -378,6 +385,7 @@
             this.davGroupBox.TabIndex = 6;
             this.davGroupBox.TabStop = false;
             this.davGroupBox.Text = "Davidon-Fletcher-Powell";
+            this.davGroupBox.Visible = false;
             // 
             // davFlow
             // 
@@ -519,7 +527,7 @@
             this.calcDavButton.TabIndex = 5;
             this.calcDavButton.Text = "Calcular";
             this.calcDavButton.UseVisualStyleBackColor = true;
-            this.calcDavButton.Click += new System.EventHandler(this.calcDavButton_Click);
+            this.calcDavButton.Click += new System.EventHandler(this.Button_Click);
             // 
             // flowLayoutPanel29
             // 
@@ -712,6 +720,7 @@
             this.calcFletchButton.TabIndex = 5;
             this.calcFletchButton.Text = "Calcular";
             this.calcFletchButton.UseVisualStyleBackColor = true;
+            this.calcFletchButton.Click += new System.EventHandler(this.Button_Click);
             // 
             // flowLayoutPanel25
             // 
@@ -904,6 +913,7 @@
             this.gradConjCalcButton.TabIndex = 5;
             this.gradConjCalcButton.Text = "Calcular";
             this.gradConjCalcButton.UseVisualStyleBackColor = true;
+            this.gradConjCalcButton.Click += new System.EventHandler(this.Button_Click);
             // 
             // flowLayoutPanel21
             // 
@@ -1096,6 +1106,7 @@
             this.newtonCalcButton.TabIndex = 5;
             this.newtonCalcButton.Text = "Calcular";
             this.newtonCalcButton.UseVisualStyleBackColor = true;
+            this.newtonCalcButton.Click += new System.EventHandler(this.Button_Click);
             // 
             // flowLayoutPanel17
             // 
@@ -1145,7 +1156,7 @@
             this.gradGroupBox.Size = new System.Drawing.Size(360, 244);
             this.gradGroupBox.TabIndex = 2;
             this.gradGroupBox.TabStop = false;
-            this.gradGroupBox.Text = "Hooke and Jeeves";
+            this.gradGroupBox.Text = "Gradiente";
             this.gradGroupBox.Visible = false;
             // 
             // gradFlow
@@ -1288,6 +1299,7 @@
             this.gradCalcButton.TabIndex = 5;
             this.gradCalcButton.Text = "Calcular";
             this.gradCalcButton.UseVisualStyleBackColor = true;
+            this.gradCalcButton.Click += new System.EventHandler(this.Button_Click);
             // 
             // flowLayoutPanel13
             // 
@@ -1480,6 +1492,7 @@
             this.calcHookeButton.TabIndex = 5;
             this.calcHookeButton.Text = "Calcular";
             this.calcHookeButton.UseVisualStyleBackColor = true;
+            this.calcHookeButton.Click += new System.EventHandler(this.Button_Click);
             // 
             // flowLayoutPanel9
             // 
@@ -1530,7 +1543,6 @@
             this.ciclicasGroupBox.TabIndex = 0;
             this.ciclicasGroupBox.TabStop = false;
             this.ciclicasGroupBox.Text = "Coordenadas Cíclicas";
-            this.ciclicasGroupBox.Visible = false;
             // 
             // ciclicasFlow
             // 
@@ -1672,6 +1684,7 @@
             this.calcButtonCiclicas.TabIndex = 5;
             this.calcButtonCiclicas.Text = "Calcular";
             this.calcButtonCiclicas.UseVisualStyleBackColor = true;
+            this.calcButtonCiclicas.Click += new System.EventHandler(this.Button_Click);
             // 
             // flowLayoutPanel5
             // 

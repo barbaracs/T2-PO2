@@ -72,5 +72,30 @@ namespace T2_PO2.Auxiliares
                     result[i, j] /= k;
             return result;
         }
+
+        public static string ParaString(this double[] v)
+        {
+            string result = "";
+            result += v[0];
+            for (int i = 1; i < v.Length; i++)
+            {
+                result += " " + v[i];
+            }
+            Console.WriteLine(result);
+            return result;
+        }
+    }
+
+    static class Help
+    {
+        public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
+        {
+            if (source==null || action==null)
+                throw new Exception("null");
+            foreach (T element in source)
+            {
+                action(element);
+            }
+        }
     }
 }
